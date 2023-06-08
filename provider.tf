@@ -8,7 +8,7 @@ provider "aws" {
 terraform {
   backend "s3" {
     bucket = "mayank-adventure-trips"
-    key    = "terraform/"
+    key    = "terraform"
     region = "ap-south-1"
   }
 }
