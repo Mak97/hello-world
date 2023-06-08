@@ -12,7 +12,3 @@ jobs:
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v2
-
-
-      - name: Terraform Plan
-        uses: hashicorp/terraform-github-actions@v2
