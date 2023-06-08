@@ -1,0 +1,26 @@
+name: "terraform-demo"
+
+on:
+  workflow_dispatch:
+    inputs:
+      destination_environment:
+        type: environment
+
+  workflow_call:
+    inputs:
+      destination_environment:
+        type: string
+        
+jobs:
+  terraform:
+    name: "Terraform"
+    runs-on: ubuntu-latest
+    environment: ${{ inputs.destination_environment }}
+
+    steps:
+      - name: Display-Environment
+        run: |
+          echo Target deployment environment: ${{ inputs.destination_environment }}
+          
+      - name: Checkout Repo
+        uses: actions/checkout@v3
