@@ -1,26 +1,30 @@
-name: "terraform-demo"
+name: CI
 
 on:
   workflow_dispatch:
     inputs:
-      destination_environment:
+      environment:
         type: environment
-
-  workflow_call:
-    inputs:
-      destination_environment:
-        type: string
-        
+        description: Select the environment
+      boolean:
+        type: boolean
+        description: True or False
+      choice:
+        type: choice
+        description: Make a choice
+        options:
+        - foo
+        - bar
+        - baz
 jobs:
-  terraform:
-    name: "Terraform"
+  build:
     runs-on: ubuntu-latest
-    environment: ${{ inputs.destination_environment }}
 
     steps:
-      - name: Display-Environment
-        run: |
-          echo Target deployment environment: ${{ inputs.destination_environment }}
-          
-      - name: Checkout Repo
-        uses: actions/checkout@v3
+      - uses: actions/checkout@v2
+
+      - name: greet
+        run: | 
+          echo "environment is ${{ github.event.inputs.environment }} / ${{ inputs.environment }}"
+          echo "boolean is ${{ github.event.inputs.boolean }}" / ${{ inputs.boolean }} 
+          echo "choice is ${{ github.event.inputs.choice }}" / ${{ inputs.choice }}
