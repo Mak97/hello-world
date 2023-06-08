@@ -1,9 +1,9 @@
 variable "access_key" {
-  default = var.access_key
+  default = env("access_key")
 }
 
 variable "secret_key" {
-  default = var.secret_key
+  default = env("secret_key")
 }
 
 variable "region" {
