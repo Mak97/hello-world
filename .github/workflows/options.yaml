@@ -15,7 +15,7 @@ on:
         options:
         - foo
         - bar
-        - baz
+        - baa
 jobs:
   build:
     runs-on: ubuntu-latest
